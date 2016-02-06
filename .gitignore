@@ -1,0 +1,9 @@
+*~
+*._*
+*.html
+coqdoc.css
+*.vo
+*.v.d
+*.glob
+Makefile.coq
+*.dir-locals.el
