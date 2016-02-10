@@ -1,12 +1,11 @@
-.PHONY: coq
+.PHONY: coq clean
 
-coq: Makefile.coq
-	$(MAKE) -C ../frap coq
-	$(MAKE) -f Makefile.coq
+COQC=coqc -q -R ../../frap Frap
 
-Makefile.coq: Makefile _CoqProject *.v
-	coq_makefile -f _CoqProject -o Makefile.coq
+coq:
+	$(COQC) Pset0Sig
+	$(COQC) Pset0
+	$(COQC) Pset0Check
 
-clean:: Makefile.coq
-	$(MAKE) -f Makefile.coq clean
-	rm -f Makefile.coq
+clean:
+	rm *.vo
