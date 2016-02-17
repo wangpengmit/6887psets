@@ -7,6 +7,8 @@ Set Implicit Arguments.
 
 (* Authors: Adam Chlipala (adamc@csail.mit.edu), Peng Wang (wangpeng@csail.mit.edu) *)
 
+(* Note: the 6887psets GitHub repository has a 'pset2' directory that contains a full template of the solution, including Makefile, _CoqProject, and a Pset2.v file with admits.
+*)
 
 (* A copy of the parallel transition-system combinator from TransitionSystem.v *)
 
