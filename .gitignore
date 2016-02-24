@@ -7,3 +7,4 @@ coqdoc.css
 *.glob
 Makefile.coq
 *.dir-locals.el
+.*.aux
