@@ -373,7 +373,7 @@ End Program1.
        unlock();
        ++nPackets;
     }
-  } while (nPackets == nPacketsOld);
+  } while (nPackets != nPacketsOld);
   unlock();
   >>
 
@@ -430,13 +430,13 @@ Module Program2.
       doAction IncA
                {| NP := np; NPO := npo; HasLock := l |} 
                {| NP := 1 + np; NPO := npo; HasLock := l |}
-  | DoWhileFalse np npo l :
+  | DoWhileTrue np npo l :
       np <> npo ->
-      doAction WhileFalse
+      doAction WhileTrue
                {| NP := np; NPO := npo; HasLock := l |} 
                {| NP := np; NPO := npo; HasLock := l |}
-  | DoWhileTrue npo l :
-      doAction WhileTrue
+  | DoWhileFalse npo l :
+      doAction WhileFalse
                {| NP := npo; NPO := npo; HasLock := l |} 
                {| NP := npo; NPO := npo; HasLock := l |}.
 
@@ -447,7 +447,7 @@ Module Program2.
    * Warning: even on my workstation, with a good predicate abstraction, it
    * takes on the order of 10 minutes to model check!  *)
   Theorem sys_ok : forall np npo,
-    invariantFor (sys np npo) (fun st => fst st = Done -> (snd st).(HasLock) = false).
+    invariantFor (sys np npo) (fun st => fst st = Unlock2 -> (snd st).(HasLock) = true).
   Proof.
   Admitted.
 
