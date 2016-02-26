@@ -40,6 +40,6 @@ Opaque Zplus. (* Important to keep Coq from trying too hard to help and
                * unfolding the definition of addition for integers! *)
 
 Theorem sys_ok : forall np npo,
-  invariantFor (sys np npo) (fun st => fst st = Done -> (snd st).(HasLock) = false).
+  invariantFor (sys np npo) (fun st => fst st = Unlock2 -> (snd st).(HasLock) = true).
 Proof.
 Admitted.
